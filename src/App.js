@@ -1,10 +1,11 @@
 import React from 'react';
 import { Routes, Route } from "react-router-dom";
+import { useState } from 'react';
+import Header from './components/Header';
 import Notes from './components/Notes';
 import AdNota from './components/AdNota';
-import Header from './components/Header';
+import VerNota from './components/VerNota';
 import Footer from './components/Footer';
-import { useState } from 'react';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
             Atravez do 'setNotasDoUtilizador([...notasDoUtilizador, nota])', o array é copiado e adiciona-se a nova nota
           */}
           <Route path="/adNota" element={<AdNota onSaveNota={(nota) => setNotasDoUtilizador([...notasDoUtilizador, nota])} />} />
+          <Route path='/verNota/:index' element={<VerNota nota={notasDoUtilizador} />}></Route>
         </Routes>
       <Footer />
     </div>

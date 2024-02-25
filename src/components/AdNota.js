@@ -27,8 +27,8 @@ function AdNota({ onSaveNota }) {
 
     return (
         <div className="adicionarNota">
-            <h1>Titulo</h1><input className='titulo' value={nota.titulo} onChange={handleTituloChange} />
-            <h2>Nota</h2><input className='conteudo' value={nota.conteudo} onChange={handleConteudoChange} />
+            <h1>Titulo</h1><input className='titulo  input-titulo' value={nota.titulo} onChange={handleTituloChange} />
+            <h2>Nota</h2><input className='conteudo  input-ad' value={nota.conteudo} onChange={handleConteudoChange} />
 
             <button onClick={handleSubmit}>Guardar</button>
 
