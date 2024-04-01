@@ -7,18 +7,17 @@ function AdNota({ onSaveNota }) {
 
     const [nota, setNota] = useState({
         titulo: '',
+        tituloText: false,
         conteudo: '',
+        conteudoText: false,
         data: new Date().toLocaleString(),
     });
-
     const handleTituloChange = (event) => {
-        setNota({ ...nota, titulo: event.target.value });
+        setNota({ ...nota, titulo: event.target.value, tituloText: true });
     };
-
     const handleConteudoChange = (event) => {
-        setNota({ ...nota, conteudo: event.target.value });
+        setNota({ ...nota, conteudo: event.target.value, conteudoText: true });
     };
-
     const handleSubmit = (event) => {
         event.preventDefault();
         onSaveNota(nota); // Chama a função onSaveNota passada como propriedade com a nova nota
@@ -27,12 +26,14 @@ function AdNota({ onSaveNota }) {
 
     return (
         <div className="adicionarNota">
-            <h1>Titulo</h1><input className='titulo  input-titulo' value={nota.titulo} onChange={handleTituloChange} />
-            <h2>Nota</h2><input className='conteudo  input-ad' value={nota.conteudo} onChange={handleConteudoChange} />
-
-            <button onClick={handleSubmit}>Guardar</button>
-
             <Link to="/" className='link-decoration'>Voltar</Link>
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="titulo">Titulo</label>
+                <input id="titulo" className='' value={nota.titulo} onChange={handleTituloChange} />
+                <label htmlFor="conteudo">Conteudo</label>
+                <textarea id="conteudo" className='' value={nota.conteudo} onChange={handleConteudoChange} />
+                <button type='submit' disabled={!nota.titulo || !nota.conteudo}>Guardar</button>
+            </form>
         </div>
     )
 }

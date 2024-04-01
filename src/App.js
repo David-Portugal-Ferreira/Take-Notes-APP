@@ -10,14 +10,20 @@ import Footer from './components/Footer';
 function App() {
 
   // Definindo o estado para armazenar as notas do utilizador
-  const [notasDoUtilizador, setNotasDoUtilizador] = useState([])
+  let [notasDoUtilizador, setNotasDoUtilizador] = useState([])
+  if(notasDoUtilizador.length > 0) {
+    localStorage.setItem("to_dos", JSON.stringify(notasDoUtilizador))
+  } 
+  
+  notasDoUtilizador = JSON.parse(localStorage.getItem("to_dos"))
+  console.log(notasDoUtilizador)
 
   return (
     <div>
       <div>
       <Header />
       <Routes>
-          <Route path="/" element={<Notes notas={notasDoUtilizador}/>} />
+          <Route path="/" element={<Notes notas={notasDoUtilizador} setNotasDoUtilizador={setNotasDoUtilizador}/>} />
           {/* 
             É passada uma função como props. Essa função recebe a variavel 'nota' do próprio componente 'AdNota'
             Atravez do 'setNotasDoUtilizador([...notasDoUtilizador, nota])', o array é copiado e adiciona-se a nova nota

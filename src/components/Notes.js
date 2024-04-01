@@ -2,7 +2,7 @@ import '../App.css'
 import React from 'react';
 import { Link } from "react-router-dom";
 
-const MAX_CHARACTERS = 20; // Define o número máximo de caracteres a serem exibidos
+const MAX_CHARACTERS = 35; // Define o número máximo de caracteres a serem exibidos
 
 const truncateContent = (content) => {
     if (content.length > MAX_CHARACTERS) {
@@ -13,7 +13,19 @@ const truncateContent = (content) => {
     return content;
 };
 
-function Notes({ notas }) {
+const eleminarNota = (index, setNotasDoUtilizador) => {
+    // Obter notas do localStorage
+    const notasComp = JSON.parse(localStorage.getItem("to_dos"));
+    // Filtrar as notas para remover a nota com o índice correspondente
+    const novasNotas = notasComp.filter((nota, i) => i !== index);
+    // Atualizar o localStorage com as notas filtradas
+    localStorage.setItem("to_dos", JSON.stringify(novasNotas));
+    // Atualizar o estado ou recarregar a página, dependendo do seu fluxo de aplicativo
+    // Exemplo de atualização do estado se você estiver usando React Hooks
+    setNotasDoUtilizador(novasNotas); // Supondo que você tenha um estado chamado 'notas' para armazenar as notas
+};
+
+function Notes({ notas, setNotasDoUtilizador }) {
     return (
         <div className="display-notes">
             <Link to="/adNota" className='link-decoration'>Adicionar Nota</Link>
@@ -23,10 +35,11 @@ function Notes({ notas }) {
                     <p>{truncateContent(nota.conteudo)}</p>
                     <p>{nota.data}</p>
                     <Link to={`/verNota/${index}`} className='link-decoration'>Ver mais</Link>
+                    <button onClick={() => eleminarNota(index, setNotasDoUtilizador)}>Eliminar</button> {/* Passa o índice para a função eleminarNota */}
                 </div>
             ))}
         </div>
-    )
-}
+    );
+};
 
 export default Notes;

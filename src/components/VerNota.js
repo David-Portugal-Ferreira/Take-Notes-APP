@@ -1,5 +1,6 @@
 import '../App.css'
 import { useParams } from 'react-router-dom';
+import { Link } from "react-router-dom"
 
 function VerNota({ nota }) {
     // Captura o parâmetro passado na URL (/verNota/:index)
@@ -22,6 +23,7 @@ function VerNota({ nota }) {
 
     return (
         <div className="verNota">
+            <Link to={"/"} className='link-decoration'><button>Voltar</button></Link>
             <div className='info'> <h2>{titulo}</h2> <h2>{dataDeCriação}</h2> </div>
             <div><p className='texto-vernota'>{conteudo}</p></div>
         </div>

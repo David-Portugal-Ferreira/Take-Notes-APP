@@ -98,3 +98,74 @@
 .texto-vernota{
   font-size: large;
 }
+
+
+
+.adicionarNota {
+  margin: auto; /* Centraliza o formulário horizontalmente */
+  margin-top: 10%; /* Define a margem superior para posicionar entre o cabeçalho e o rodapé */
+  width: 80%; /* Defina a largura do div em porcentagem */
+  max-width: 500px; /* Define uma largura máxima para o div */
+  display: flex;
+  flex-direction: column;
+}
+
+.adicionarNota form {
+  width: 100%; /* Garante que o formulário ocupe toda a largura do contêiner */
+}
+
+.adicionarNota label {
+  margin-top: 10px;
+}
+
+.adicionarNota input,
+.adicionarNota textarea {
+  width: 100%; /* Defina a largura do input e textarea em 100% do div pai */
+  padding: 5px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; /* Inclui padding e borda na largura total */
+}
+
+.adicionarNota button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.adicionarNota button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.link-decoration {
+  text-decoration: none;
+  color: #007bff;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.adicionarNota input {
+  width: 100%; /* Defina a largura desejada */
+  padding: 5px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  height: 40px; /* Defina a altura desejada */
+}
+
+.adicionarNota textarea {
+  width: 100%; /* Defina a largura desejada */
+  padding: 5px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  height: 250px; /* Defina a altura desejada */
+  resize: none; /* Impede que a textarea seja redimensionada pelo usuário */
+}
